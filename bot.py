@@ -1,3 +1,5 @@
+# в текущем каталоге должен быть размещен файл api.py, содержащий строку
+# token = 'ваш_токен'.
 import api
 import telebot
 import turtle
@@ -10,7 +12,9 @@ bot = telebot.TeleBot(api.token, threaded=False)
 def anyMessage(message):
     command = message.text.lower().strip()
     print(command)
-    if command == 'поднять хвост':
+    if command == 'reset' and message.from_user.id == 379884080:
+        turtle.reset()
+    elif command == 'поднять хвост':
         turtle.penup()
     elif command == 'опустить хвост':
         turtle.pendown()
